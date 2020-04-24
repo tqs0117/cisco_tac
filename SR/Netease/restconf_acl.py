@@ -108,21 +108,39 @@ def delete_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step):
             acl_start_seq, acl_stop_seq, acl_seq_step))
 
 
-def test_loop1(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step):
-    with open('script.log', 'a+') as log:
-        log.write(str(datetime.datetime.now()) + '\n')
-        log.write('Starting test_loop1..\n\n')
+def test_loop1(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step, iteration):
+    if iteration == 0:
+        while True:
+            with open('script.log', 'a+') as log:
+                log.write(str(datetime.datetime.now()) + '\n')
+                log.write('Starting test_loop1..\n\n')
 
-    create_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step)
-    patch_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step)
-    delete_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step)
+            create_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step)
+            patch_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step)
+            delete_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step)
 
-    with open('script.log', 'a+') as log:
-        log.write(str(datetime.datetime.now()) + '\n')
-        log.write('Completed test_loop1!! :)\n\n')
+            with open('script.log', 'a+') as log:
+                log.write(str(datetime.datetime.now()) + '\n')
+                log.write('Completed test_loop1!! :)\n\n')
+    else:
+        i = 0
+        while i < iteration:
+            with open('script.log', 'a+') as log:
+                log.write(str(datetime.datetime.now()) + '\n')
+                log.write('Starting test_loop1 iteration {}..\n\n'.format(i))
+
+            create_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step)
+            patch_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step)
+            delete_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step)
+
+            with open('script.log', 'a+') as log:
+                log.write(str(datetime.datetime.now()) + '\n')
+                log.write('Completed test_loop1 ineration {}!! :)\n\n'.format(i))
+
+            i += 1
 
 
 # Entry point for program
 if __name__ == '__main__':
-    test_loop1("10.124.41.180", "NAM", 1500, 1600, 10)
+    test_loop1("10.124.41.180", "NAM", 1500, 1600, 10, 2)
 
