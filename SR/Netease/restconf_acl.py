@@ -142,5 +142,5 @@ def test_loop1(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step, ite
 
 # Entry point for program
 if __name__ == '__main__':
-    test_loop1("10.106.38.156", "NAM", 1500, 1600, 5, 1)
+    test_loop1("10.106.38.156", "NAM", 1500, 1600, 1, 0)
 
