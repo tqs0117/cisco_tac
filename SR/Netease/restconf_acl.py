@@ -137,10 +137,10 @@ def test_loop1(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step, ite
                 log.write(str(datetime.datetime.now()) + '\n')
                 log.write('Completed test_loop1 ineration {}!! :)\n\n'.format(i))
 
-            i += 1
+            i = i + 1
 
 
 # Entry point for program
 if __name__ == '__main__':
-    test_loop1("10.124.41.180", "NAM", 1500, 1600, 10, 2)
+    test_loop1("10.106.38.156", "NAM", 1500, 1600, 10, 1)
 
