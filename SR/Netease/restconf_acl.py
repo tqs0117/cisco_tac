@@ -15,7 +15,7 @@ payload_dict = json.loads(payload_raw)
 def create_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step):
     with open('script.log', 'a+') as log:
         log.write(str(datetime.datetime.now()) + '\n')
-        log.write('Starting to create acl from seq {} to {} by step of {}..\n\n'.format(
+        log.write('Starting to create acl from seq {} to {} by step of {}..\n'.format(
             acl_start_seq, acl_stop_seq, acl_seq_step))
 
     for acl_seq in range(acl_start_seq, acl_stop_seq, acl_seq_step):
@@ -42,14 +42,14 @@ def create_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step):
 
     with open('script.log', 'a+') as log:
         log.write(str(datetime.datetime.now()) + '\n')
-        log.write('Completed to create acl from seq {} to {} by step of {} :)\n\n'.format(
+        log.write('Completed to create acl from seq {} to {} by step of {} :)\n'.format(
             acl_start_seq, acl_stop_seq, acl_seq_step))
 
 
 def patch_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step):
     with open('script.log', 'a+') as log:
         log.write(str(datetime.datetime.now()) + '\n')
-        log.write('Starting to patch acl from seq {} to {} by step of {}..\n\n'.format(
+        log.write('Starting to patch acl from seq {} to {} by step of {}..\n'.format(
             acl_start_seq, acl_stop_seq, acl_seq_step))
 
     for acl_seq in range(acl_start_seq, acl_stop_seq, acl_seq_step):
@@ -75,14 +75,14 @@ def patch_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step):
 
     with open('script.log', 'a+') as log:
         log.write(str(datetime.datetime.now()) + '\n')
-        log.write('Completed to patch acl from seq {} to {} by step of {} :)\n\n'.format(
+        log.write('Completed to patch acl from seq {} to {} by step of {} :)\n'.format(
             acl_start_seq, acl_stop_seq, acl_seq_step))
 
 
 def delete_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step):
     with open('script.log', 'a+') as log:
         log.write(str(datetime.datetime.now()) + '\n')
-        log.write('Starting to delete acl from seq {} to {} by step of {}..\n\n'.format(
+        log.write('Starting to delete acl from seq {} to {} by step of {}..\n'.format(
             acl_start_seq, acl_stop_seq, acl_seq_step))
 
     for acl_seq in range(acl_start_seq, acl_stop_seq, acl_seq_step):
@@ -104,16 +104,17 @@ def delete_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step):
 
     with open('script.log', 'a+') as log:
         log.write(str(datetime.datetime.now()) + '\n')
-        log.write('Completed to delete acl from seq {} to {} by step of {} :)\n\n'.format(
+        log.write('Completed to delete acl from seq {} to {} by step of {} :)\n'.format(
             acl_start_seq, acl_stop_seq, acl_seq_step))
 
 
 def test_loop1(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step, iteration):
     if iteration == 0:
         while True:
+            i = 0
             with open('script.log', 'a+') as log:
                 log.write(str(datetime.datetime.now()) + '\n')
-                log.write('Starting test_loop1..\n\n')
+                log.write('Starting test_loop1 iteration {}..\n'.format(i))
 
             create_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step)
             patch_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step)
@@ -121,13 +122,13 @@ def test_loop1(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step, ite
 
             with open('script.log', 'a+') as log:
                 log.write(str(datetime.datetime.now()) + '\n')
-                log.write('Completed test_loop1!! :)\n\n')
+                log.write('Completed test_loop1 iteration {}!! :)\n\n'.format(i))
     else:
         i = 0
         while i < iteration:
             with open('script.log', 'a+') as log:
                 log.write(str(datetime.datetime.now()) + '\n')
-                log.write('Starting test_loop1 iteration {}..\n\n'.format(i))
+                log.write('Starting test_loop1 iteration {}..\n'.format(i))
 
             create_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step)
             patch_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step)
