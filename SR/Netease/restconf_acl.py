@@ -110,8 +110,8 @@ def delete_acl(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step):
 
 def test_loop1(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step, iteration):
     if iteration == 0:
+        i = 0
         while True:
-            i = 0
             with open('script.log', 'a+') as log:
                 log.write(str(datetime.datetime.now()) + '\n')
                 log.write('Starting test_loop1 iteration {}..\n'.format(i))
@@ -123,6 +123,8 @@ def test_loop1(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step, ite
             with open('script.log', 'a+') as log:
                 log.write(str(datetime.datetime.now()) + '\n')
                 log.write('Completed test_loop1 iteration {}!! :)\n\n'.format(i))
+            i = i + 1
+
     else:
         i = 0
         while i < iteration:
@@ -137,7 +139,6 @@ def test_loop1(ip_addr, acl_name, acl_start_seq, acl_stop_seq, acl_seq_step, ite
             with open('script.log', 'a+') as log:
                 log.write(str(datetime.datetime.now()) + '\n')
                 log.write('Completed test_loop1 ineration {}!! :)\n\n'.format(i))
-
             i = i + 1
 
 
